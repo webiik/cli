@@ -1,0 +1,23 @@
+{
+  "name": "webiik/cli-analyse",
+  "description": "The simple CLI tool that helps you to analyze code quality.",
+  "keywords": ["analyse", "code", "quality", "analysis"],
+  "homepage": "https://www.webiik.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jiri Mihal",
+      "email": "jiri@mihal.me"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "phpmd/phpmd": "@stable",
+    "squizlabs/php_codesniffer": "^3",
+    "phpstan/phpstan": "^0.10",
+    "phpmetrics/phpmetrics": "^2"
+  },
+  "bin": [
+    "analyse"
+  ]
+}
