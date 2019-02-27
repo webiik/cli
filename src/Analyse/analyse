@@ -41,7 +41,7 @@ run_test() {
 run_phpmd() {
 	echo -e "\n🧹 Running PHPMD test..."
 
-	if ! hash ../vendor/bin/phpmd 2>/dev/null; then
+	if ! hash phpmd 2>/dev/null; then
 		echo -e "🚨ERR: phpmd not found in vendor/bin folder."
 		echo -e "INF: Install it using the composer: composer require --dev phpmd/phpmd"
 		echo -e "INF: phpmd test skipped."
@@ -52,14 +52,14 @@ run_phpmd() {
 		mkdir ${OUTPUT_DIR}/phpmd
 	fi
 
-	../vendor/bin/phpmd ${SOURCE_DIR} cleancode,codesize,design,naming,unusedcode --reportfile ${OUTPUT_DIR}/phpmd/index.html
+	phpmd ${SOURCE_DIR} cleancode,codesize,design,naming,unusedcode --reportfile ${OUTPUT_DIR}/phpmd/index.html
 	echo -e "💡INF: Look in to folder ${OUTPUT_DIR}/phpmd to see the PHPMD test result."
 }
 
 run_phpcs() {
 	echo -e "\n🐽 Running PHPCS test..."
 
-	if ! hash ../vendor/bin/phpcs 2>/dev/null; then
+	if ! hash phpcs 2>/dev/null; then
 		echo -e "🚨ERR: phpcs not found in vendor/bin folder."
 		echo -e "INF: Install it using the composer: composer require --dev squizlabs/php_codesniffer"
 		echo -e "INF: phpcs test skipped."
@@ -70,14 +70,14 @@ run_phpcs() {
 		mkdir ${OUTPUT_DIR}/phpcs
 	fi
 
-	../vendor/bin/phpcs --standard=PSR2 --report-full=${OUTPUT_DIR}/phpcs/report-full.txt --report-code=${OUTPUT_DIR}/phpcs/report-code.txt ${SOURCE_DIR}
+	phpcs --standard=PSR2 --report-full=${OUTPUT_DIR}/phpcs/report-full.txt --report-code=${OUTPUT_DIR}/phpcs/report-code.txt ${SOURCE_DIR}
 	echo -e "💡INF: Look in to folder ${OUTPUT_DIR}/phpcs to see the PHPCS test result."
 }
 
 run_phpstan() {
 	echo -e "\n🔎 Running PHPStan test..."
 
-	if ! hash ../vendor/bin/phpstan 2>/dev/null; then
+	if ! hash phpstan 2>/dev/null; then
 		echo -e "🚨ERR: phpstan not found in vendor/bin folder."
 		echo -e "INF: Install it using the composer: composer require --dev phpstan/phpstan"
 		echo -e "INF: phpstan test skipped."
@@ -88,14 +88,14 @@ run_phpstan() {
 		mkdir ${OUTPUT_DIR}/phpstan
 	fi
 
-	../vendor/bin/phpstan analyse ${SOURCE_DIR} -l 7 --no-ansi --no-progress | awk '{$1=$1;print}' > ${OUTPUT_DIR}/result.txt
+	phpstan analyse ${SOURCE_DIR} -l 7 --no-ansi --no-progress | awk '{$1=$1;print}' > ${OUTPUT_DIR}/result.txt
 	echo -e "💡INF: Look in to folder ${OUTPUT_DIR}/phpstan to see the PHPStan test result."
 }
 
 run_phpmetrics() {
 	echo -e "\n📊 Running PHPmetrics test..."
 
-	if ! hash ../vendor/bin/phpmetrics 2>/dev/null; then
+	if ! hash phpmetrics 2>/dev/null; then
 		echo -e "🚨ERR: phpmetrics not found in vendor/bin folder."
 		echo -e "INF: Install it using the composer: composer require --dev phpmetrics/phpmetrics"
 		echo -e "INF: phpmetrics test skipped."
@@ -106,7 +106,7 @@ run_phpmetrics() {
 		mkdir ${OUTPUT_DIR}/phpmetrics
 	fi
 
-	../vendor/bin/phpmetrics --report-html=${OUTPUT_DIR}/phpmetrics ${SOURCE_DIR}
+	phpmetrics --report-html=${OUTPUT_DIR}/phpmetrics ${SOURCE_DIR}
 	echo -e "💡INF: Look in to folder ${OUTPUT_DIR}/phpmetrics to see the PHPmetrics test result."
 }
 
