@@ -9,33 +9,39 @@ This CLI tool analyses code using preconfigured PHPCS, PHPMD, PHPSTAN, PHPmetric
 
 > It's very likely that this tool will find "bugs" in your code. Always investigate these "bugs" and consider a fix. Avoid over-optimization of code, always keep in mind readability and testability.      
 
+Installation
+------------
+```bash
+composer require --dev webiik/cli-analyse
+```
+
 Usage
 -----
 ### analyse
-```php
+```bash
 analyse source-dir output-dir
 ```
 **analyse** runs code analyses over the source directory and outputs analyses results to the output directory.
-```php
+```bash
 bash analyse /private/app/ /private/tmp/analysis/app/
 ```
 
 Settings
 --------
 In brief, command **analyse** tests code for the PSR-2 standards and PHP strict types. It uses the following settings:
-```php
+```bash
 phpmd [source_dir] html cleancode,codesize,design,naming,unusedcode --reportfile [output_dir]/phpmd/index.html
 ```
-```php
+```bash
 phpcs --standard=PSR2 --report-full=[output_dir]/phpcs/report-full.txt --report-code=[output_dir]/phpcs/report-code.txt [source_dir]
 ```
-```php
+```bash
 phpstan analyse [source_dir] -l 7 --no-ansi --no-progress | awk '{$1=$1;print}' > [output_dir]/phpstan/result.txt
 ```
-```php
+```bash
 phpmetrics --report-html=[output_dir]/phpmetrics [source_dir]
 ```
-```php
+```bash
 sonar-scanner \
 -Dsonar.projectKey=[sonar project key] \
 -Dsonar.organization=[sonar organization] \
@@ -48,7 +54,7 @@ sonar-scanner \
 Resources
 ---------
 * [Webiik framework][1]
-* [Report issues][2]
+* [Report issue][2]
 
 [1]: https://github.com/webiik/webiik
-[2]: https://github.com/webiik/webiik/issues
+[2]: https://github.com/webiik/components/issues
