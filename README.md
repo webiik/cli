@@ -5,7 +5,6 @@ Webiik command line tools make development with Webiik easier.
 Available CLI Tools
 -------------------
 - [Analyse](./src/Analyse)
-- [Webiik](./src/Webiik)
 
 Resources
 ---------
