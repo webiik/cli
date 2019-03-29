@@ -21,16 +21,16 @@ if [[ "$#" == 1 ]]; then
 	# List all directories in src/Webiik
 	for dir in src/*
 	do
-		# Remove existing split repo dir
-		if [[ -d ~/webiik-repos/cli/${dir} ]]; then
-			sudo rm -r ~/webiik-repos/cli/${dir}
-		fi
-
 		# Remove the trailing "/"
 		dir=${dir%*/}
 
 		# Get everything after the final "/"
 		dir=${dir##*/}
+
+		# Remove existing split repo dir
+		if [[ -d ~/webiik-repos/cli/${dir} ]]; then
+			sudo rm -r ~/webiik-repos/cli/${dir}
+		fi
 
 		mkdir ~/webiik-repos/cli/${dir}
 
